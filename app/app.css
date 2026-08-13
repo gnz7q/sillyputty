@@ -2,15 +2,45 @@
 
 @theme {
 	--font-sans:
-		"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+		"Segoe UI Symbol", "Noto Color Emoji";
 }
 
 html,
 body {
-	@apply bg-white dark:bg-gray-950;
+	@apply bg-[#fbd15e];
+}
 
-	@media (prefers-color-scheme: dark) {
-		color-scheme: dark;
-	}
+/*
+ * Lights-off atmosphere — one warm amber system shared by the backdrop
+ * particles, the price ruler and the puzzle board.
+ */
+.login-atmosphere {
+	--login-bg: #fbd15e;
+	--login-bg-mid: #f3c94a;
+	--login-bg-deep: #e8b43a;
+	--login-glow: #ffe08a;
+	--login-ink: #3a2a12;
+	--login-tick: rgb(58 42 18 / 0.28);
+	--login-tick-major: rgb(58 42 18 / 0.42);
+	--login-marker-flat: #5b3a3a;
+	/* Up/down marker paints live in loginAtmosphere.ts (shared with particles). */
+	--login-cream: #fff5d6;
+	--login-charcoal: #232323;
+	color: var(--login-ink);
+	background-color: var(--login-bg);
+}
+
+.login-atmosphere-bg {
+	background:
+		radial-gradient(ellipse 90% 70% at 50% 38%, var(--login-glow) 0%, transparent 58%),
+		radial-gradient(ellipse 70% 55% at 82% 92%, var(--login-bg-deep) 0%, transparent 52%),
+		radial-gradient(ellipse 55% 45% at 12% 88%, var(--login-bg-mid) 0%, transparent 48%),
+		var(--login-bg);
+}
+
+.login-atmosphere-noise {
+	opacity: 0.045;
+	mix-blend-mode: multiply;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
